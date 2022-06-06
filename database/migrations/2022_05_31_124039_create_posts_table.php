@@ -13,13 +13,17 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
+        if (!Schema::hasTable('posts')) {
+
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->unique();
+            $table->string('title');
             $table->text('content');
-            $table->text('slug')->unique();
+            $table->text('slug');
             $table->timestamps();
         });
+        }
+
     }
 
     /**

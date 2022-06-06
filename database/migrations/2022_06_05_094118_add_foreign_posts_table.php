@@ -14,13 +14,16 @@ class AddForeignPostsTable extends Migration
     public function up()
     {
         //
-        Schema::table('posts', function(Blueprint $table) {
-            $table->unsignedBigInteger('category_id');
+        if (!Schema::hasTable('posts')) {
+            Schema::table('posts', function(Blueprint $table) {
+                $table->unsignedBigInteger('category_id');
 
-            $table->foreign('category_id')
-                  ->references('id')
-                  ->on('categories');
-        });
+                $table->foreign('category_id')
+                      ->references('id')
+                      ->on('categories')->setDelete('set null');
+            });
+        }
+
     }
 
     /**

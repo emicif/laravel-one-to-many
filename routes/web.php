@@ -18,8 +18,10 @@ Route::get('/', function () {
 });
 */
 
+Auth::routes();
+
 //non crea rotte quindi non ci si può accedere -> ti rimanda a guest!
-Auth::routes(['register'=>false, 'reset'=>false, 'verify'=>false]);
+//Auth::routes(['register'=>false, 'reset'=>false, 'verify'=>false]);
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
