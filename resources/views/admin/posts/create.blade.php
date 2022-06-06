@@ -32,6 +32,19 @@
                         <textarea name="content" class="form-control" placeholder="Inserisci contenuto"
                             required>{{ old('content') }}</textarea>
                     </div>
+
+                    {{-- category --}}
+                    <div class="form-group">
+                        <label>Categoria</label>
+                        <select name="category_id">
+                            <option value="">--Scegli la categoria</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <button type="submit" class="btn btn-success">Crea post</button>
                     </div>
