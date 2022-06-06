@@ -18,10 +18,10 @@ class CategoriesTableSeeder extends Seeder
         $categories = ['Maschile', 'Femminile', 'Doppio Maschile', 'Doppio Femminile'];
 
         foreach($categories as $category){
-            $new_category = new Category();
-            $new_category->name = $category;
-            $new_category->slug = Str::slug($category);
-            $new_category->save();
+            $new_category_object = new Category();
+            $new_category_object->name = $category;
+            $new_category_object->slug = Str::slug($category);
+            $new_category_object->save();
         }
     }
 }

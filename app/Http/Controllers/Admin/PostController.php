@@ -46,7 +46,8 @@ class PostController extends Controller
         //
         $request->validate([
             'title'=>'required|max:250',
-            'content'=>'required'
+            'content'=>'required',
+            'category_id'=>'required|exists:categories,id'
         ]);
 
         $postData = $request->all();
@@ -78,8 +79,9 @@ class PostController extends Controller
     {
         //
         $post = Post::find($id);
+        $category = Category::find($post->category_id);
         if($post){
-            return view('admin.posts.show', compact('post'));
+            return view('admin.posts.show', compact('post', 'category'));
         }else{
             abort(404);
         }
@@ -110,7 +112,8 @@ class PostController extends Controller
         //
         $request->validate([
             'title'=>'required|max:250',
-            'content'=>'required'
+            'content'=>'required',
+
         ]);
         $post = Post::findOrFail($id);
         $postData = $request->all();
